@@ -1,0 +1,326 @@
+/* parte 3 */
+.intro-content {
+  position: relative;
+  top: -8rem;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--gap);
+  min-height: 100vh;
+  /* correção */
+}
+
+/* https://undraw.co/ */
+.intro-text-content,
+.intro-img {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
+.intro-text-content h2 {
+  font-size: 6rem;
+  margin-bottom: 5rem;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* elements body line-height: 1.5; */
+
+.intro-img img,
+.intro-img svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* parte 4 */
+.top3-content {
+  max-width: 64rem;
+  display: flex;
+  /* correção */
+  /* flex-flow: column wrap; */
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* nao deixar a coluna se quebrar */
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+/* parte4  grid-one*/
+.grid-one-content {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  min-height: 100vh;
+  /* correção min-height*/
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  counter-reset: grid-counter;
+}
+
+.grid h3 {
+  font-size: 3rem;
+  position: relative;
+  padding-left: 5rem;
+  padding-bottom: 2rem;
+}
+
+.grid h3::before {
+  counter-increment: grid-counter;
+  content: counter(grid-counter);
+  position: absolute;
+  font-size: 8rem;
+  font-style: italic;
+  top: -4rem;
+  left: -1rem;
+  transform: rotate(5deg);
+}
+.grid-main-heading {
+  margin-bottom: 1rem;
+}
+.grid-description {
+  padding-bottom: 5rem;
+}
+.gallery-img {
+  width: 100%;
+  max-width: 36rem;
+  max-height: 36rem;
+  overflow: hidden;
+}
+.gallery-img img {
+  transition: all 300ms ease-in-out;
+}
+.gallery-img img:hover {
+  transform: translate(-3%, 3%) scale(1.2) rotate(5deg);
+}
+/* parte 4 */
+.contact-form{
+  grid-column: span 2;
+}
+
+.contact-form .form-grid{
+  border: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
+
+.form-grid legend{
+  font-style: italic;
+  font-size: 1.6rem;
+  margin-bottom: 3rem;
+}
+.form-group{
+  flex: 1 1 320px;
+}
+.form-group label{
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.form-group input, .form-group textarea{
+  border: none;
+  background: var(--white-color);
+  padding: 1.5rem 2rem;
+  width: 100%;
+  /*  box-sizing: border-box; no elements *{} */
+}
+.form-group input:focus, .form-group textarea:focus{
+  box-shadow: 0px 0px 10px 2px var(--secondary-color);
+}
+.form-group button{
+  border: 0.5rem solid var(--white-color);
+  background: none;
+  color: var(--white-color);
+  padding: 1.5rem 2rem;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+.form-group button:hover{
+  background: var(--white-color);
+  color: var(--primary-color);
+}
+.form-group ::placeholder{
+  color: var(--light-gray-color);
+  /* se quiser coloca uma cor mais escura mas nao muito mais... */
+}
+.footer{
+  text-align: center;
+  font-size: 1.6rem;
+}
+.footer a{
+  color: var(--primary-color);
+}
+.span {
+  color: var(--secondary-color);
+}
+
+.footer p{
+  margin: 0;
+  padding: 1rem;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--white-color);
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: var(--primary-color);
+  transform: rotate(-90deg);
+  border: 0.1rem solid var(--primary-color);
+}
+
+.close-menu {
+  display: none;
+}
+@media (max-width: 800px) {
+  .intro-content, .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%; 
+  }
+
+  .gallery-img img {
+    width: 100%;
+  }
+
+  .grid-one-content {
+    display: block;
+  }
+
+  .menu {
+    bottom: 0;
+    text-align: center;
+  }
+
+  .menu-content, .menu-content ul {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .menu-content {
+    height: 100vh;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .close-menu-label::after {
+    content: '☰';
+    position: fixed;
+    z-index: 2;
+    top: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    color: var(--white-color);
+    font-size: 3rem;
+    line-height: 3rem;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .close-menu:checked~.menu {
+    display: block;
+  }
+
+  .close-menu:checked~.close-menu-label::after {
+    content: '×';
+  }
+  .menu-spacing {
+    display: none;
+  }
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 3.6rem;
+  }
+  h3 {
+    font-size: 3.4rem;
+  }
+  h4 {
+    font-size: 3.2rem;
+  }
+  h5 {
+    font-size: 3rem;
+  }
+  h6 {
+    font-size: 2.8rem;
+  }
+}
+.gallery { /* Estiliza elementos com a classe gallery */
+  display: flex; /* Define como contêiner flexível */
+  flex-wrap: wrap; /* Permite que os itens internos se quebrem em várias linhas */
+  justify-content: center; /* Centraliza os itens filhos */
+}
+.gallery-item { /* Estiliza elementos com a classe gallery-item */
+  margin: 10px; /* Adiciona uma margem de 10 pixels */
+}
+.gallery-item img { /* Estiliza imagens dentro de elementos com a classe gallery-item */
+  width: 200px; /* Define a largura como 200 pixels */
+  height: 150px; /* Define a altura como 150 pixels */
+  object-fit: cover; /* Ajusta a imagem para cobrir a área sem distorção */
+  cursor: pointer; /* Muda o cursor para um ponteiro ao passar o mouse */
+}
+.modal { /* Estiliza elementos com a classe modal */
+  display: none; /* Torna o modal invisível por padrão */
+  position: fixed; /* Define a posição como fixa */
+  z-index: 1; /* Define a profundidade de camada */
+  padding-top: 60px; /* Adiciona 60 pixels de preenchimento no topo */
+  left: 0; /* Alinha à esquerda */
+  top: 0; /* Alinha ao topo */
+  width: 100%; /* Define a largura como 100% da tela */
+  height: 100%; /* Define a altura como 100% da tela */
+  overflow: auto; /* Adiciona uma barra de rolagem se o conteúdo ultrapassar o tamanho da tela */
+  background-color: rgb(0,0,0); /* Define a cor de fundo como preta */
+}
+.modal-content { /* Estiliza elementos com a classe modal-content */
+  margin: auto; /* Centraliza horizontalmente */
+  display: block; /* Define como bloco */
+  width: 80%; /* Define a largura como 80% do contêiner */
+  max-width: 700px; /* Define a largura máxima como 700 pixels */
+}
+.close { /* Estiliza elementos com a classe close */
+  position: absolute; /* Define a posição como absoluta */
+  top: 15px; /* Alinha 15 pixels do topo */
+  right: 35px; /* Alinha 35 pixels da direita */
+  color: #fff; /* Define a cor do texto como branca */
+  font-size: 40px; /* Define o tamanho da fonte como 40 pixels */
+  font-weight: bold; /* Define a fonte como negrito */
+  transition: 0.3s; /* Define a transição das propriedades como 0.3 segundos */
+}
+.close:hover, /* Estiliza elementos com a classe close ao passar o mouse */
+.close:focus { /* Estiliza elementos com a classe close quando estão em foco */
+  color: #bbb; /* Muda a cor do texto para cinza claro */
+  text-decoration: none; /* Remove a decoração do texto */
+  cursor: pointer; /* Muda o cursor para um ponteiro */
+}
+.banner{ /* Estiliza elementos com a classe banner */
+  text-align: center; /* Centraliza o texto */
+  margin: 20px 0; /* Adiciona uma margem de 20 pixels acima e abaixo */
+}
+.banner img{ /* Estiliza imagens dentro de elementos com a classe banner */
+  width: 50%; /* Define a largura como 100% do contêiner */
+  max-width: 1000px; /* Define a largura máxima como 800 pixels */
+  height: auto; /* Ajusta a altura automaticamente para manter a proporção */
+}
